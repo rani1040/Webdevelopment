@@ -1,1 +1,2 @@
-# day one agenda -- caption maker
+# day one agenda -- caption generator
+# write basic html structure.
