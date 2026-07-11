@@ -1,0 +1,54 @@
+<!doctype>
+<html>
+    <head>
+        <style>
+            .rectangle{
+                width: 300px;
+                height: 500px;
+                border: 5px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="rectangle">
+            <h1 id="heading">Hello , Welcome to codingal</h1>
+        </div>
+        <button id="hide">Hide</button>
+        <button id="show">Show</button>
+        <button id="color">color change</button>
+        <button id="color_text">color change of text</button>
+
+        <script>
+            var hide_btn=document.getElementById("hide");
+            var show_btn=document.getElementById("show");
+            var color_btn=document.getElementById("color");
+             var txt_color_btn=document.getElementById("color_text");
+
+            var h1=document.getElementById("heading");
+            var box= document.getElementsByClassName("rectangle")[0];
+
+            color_btn.addEventListener("click",
+                function (){
+                   box.style.backgroundColor="red";
+                }
+            )
+            show_btn.addEventListener("click",
+                function(){
+                    box.style.display="block";
+                }
+            )
+            hide_btn.addEventListener("click",
+                function(){
+                    box.style.display="none";
+                }
+            )
+            txt_color_btn.addEventListener("click",
+                function(){
+                     h1.style.color="pink";
+                }
+            )
+           
+            
+        </script>
+    </body>
+</html>

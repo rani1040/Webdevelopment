@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Delivery Tracker</h1>
+
+<button onclick="saveorder()">Save Order</button>
+
+<button onclick="startdelivery()">Start Delivery</button>
+
+<h1>Original Product Details</h1>
+
+<p id="details"></p>
+
+<p id="deliverystatus"></p>
+
+</div>
+
+</body>
+
+<script>
+
+var product1={
+
+product_name:"laptop",
+
+price:65000,
+
+customer_name:"Saket",
+
+}
+
+function saveorder(){
+    document.getElementById("details").innerHTML=JSON.stringify(product1);
+}
+
+setTimeout(
+    function(){
+    document.getElementById("deliverystatus").innerHTML+="hello";
+},5000);
+</script>

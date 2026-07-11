@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .card{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: antiquewhite;
+                border-radius: 20%;
+                width: 150px;
+                height: 300px;
+            }
+            body{
+                background-color: azure;
+            }
+        </style>
+
+    </head>
+    <body>
+        
+        <h1 id="heading"></h1>
+        <p id="para"></p>
+        <p></p>
+        <script>
+            
+            let h=document.getElementById("heading");
+            h.innerHTML="green";
+            document.querySelector('#heading').innerHTML="Solar System";
+            document.querySelector("#para").innerHTML="Solar system is consist of 8 planents -- Mercury , venus , earth , mars, jupiter , saturn , neptune and urnaus ";
+
+        </script>
+    </body>
+</html>

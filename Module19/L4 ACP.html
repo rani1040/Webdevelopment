@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+           #variable_int,#variable_str,#variable_boolean{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            border-radius: 15px;
+           position:relative;
+           
+           }
+         
+
+           #value{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(165, 187, 236);
+            border-radius: 15px;
+            position: absolute;
+           }
+           .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            background-color: azure;
+            padding: 20px;
+           }
+           header{
+            text-align: center;
+            font-size: 50px;
+            background-color: rgb(220, 245, 245);
+            color: rgb(8, 75, 75);
+           }
+        </style>
+    </head>
+    <body>
+      <header>
+         <h1>Let's learn aboubt Data type</h1>
+        <h3>drag this value and put in box which is its datype</h3>
+      </header>
+        <button id="value">45</button>
+        
+        <div class="container">
+            <button id="variable_int">Integer</button>
+            <button id="variable_str">String</button>
+            <button id="variable_boolean">Boolean</button>
+        </div>
+        <script>
+
+            // everytime different type 
+            function random_value(array){
+                return array[Math.floor(Math.random()*array.length)];
+            }
+
+            const random_number=Math.random()*10;
+            const random_str=["color","ayansh","hello","apple"];
+            const random_boolean=[true,false];
+
+            var datatypes=[random_number,random_value(random_str),random_value(random_boolean)];
+
+            
+           
+            var valuebtn=document.getElementById("value");
+            var variable_value=random_value(datatypes);
+            valuebtn.innerText=variable_value;
+            
+
+            // lets make value button draggable
+            var valuebtn=document.getElementById("value");
+
+            var variable_int_btn=document.getElementById("variable_int");
+            var variable_str_btn=document.getElementById("variable_str");
+            var variable_boolean_btn=document.getElementById("variable_boolean");
+
+            var all_variable_box_list=[variable_int_btn,variable_str_btn,variable_boolean_btn];
+
+
+
+            let isdragging=false;
+
+            valuebtn.addEventListener("mousedown",
+                function(){
+                    isdragging=true;
+                }
+            )
+            document.addEventListener("mouseup",
+                function(){
+                    isdragging=false;
+                }
+            )
+
+            function check(valuebtn,variable_btn,i,variable_value){
+
+                let value_box=valuebtn.getBoundingClientRect();
+                let variable_box=variable_btn.getBoundingClientRect();
+                if(
+                     value_box.left < variable_box.right &&
+                    value_box.right > variable_box.left &&
+                    value_box.top < variable_box.bottom &&
+                    value_box.bottom > variable_box.top
+                ){
+                    if(typeof(variable_value)=="number" && i==0){
+                        variable_btn.innerText="Correct";
+                        variable_btn.style.backgroundColor="green";
+                        valuebtn.style.display="none";
+                    }
+                    else if(typeof(variable_value)=="string" && i==1){
+                        variable_btn.innerText="Correct";
+                        variable_btn.style.backgroundColor="green";
+                        valuebtn.style.display="none";
+                    
+                    
+
+                    }
+                    else if(typeof(variable_value)=="boolean" && i==2){
+                          variable_btn.innerText="Correct";
+                        variable_btn.style.backgroundColor="green";
+                        valuebtn.style.display="none";
+                    }
+                    else{
+                        variable_btn.innerText="Wrong";
+                        
+                        variable_btn.style.backgroundColor="red";
+                        valuebtn.style.display="none";
+                    }
+
+                }
+
+            }
+
+            document.addEventListener("mousemove",
+                function(event){
+                   if(isdragging){
+                     // because all element starts from top left side
+                    valuebtn.style.left = event.pageX-50 +"px";
+                    valuebtn.style.top = event.pageY-50 +"px";
+                   }
+                   for(var i=0 ; i<all_variable_box_list.length;i++){
+                        check(valuebtn,all_variable_box_list[i],i,variable_value);
+                   }
+                }
+            )
+            
+         
+
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .card{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background-color: antiquewhite;
+                border-radius: 20%;
+                width: 150px;
+                height: 300px;
+            }
+            body{
+                background-color: azure;
+            }
+        </style>
+
+    </head>
+    <body>
+        
+        <h1 id="heading"></h1>
+        <p></p>
+        <script>
+            
+
+            // lets create card using dom
+            // to create card first create div
+            var div = document.createElement('div');
+            //lets give some class to style it later
+            div.className="card";
+
+            //lets create para and heading also
+            let h1=document.createElement('h1');
+            //lets write something in h1
+            h1.innerText="I am Heading in card"
+            //lets create para also
+            let p1=document.createElement('p');
+            p1.innerHTML="i am para inside card";
+
+            //lets put both h1 and p1 inside card
+            div.append(h1);
+            div.append(p1);
+
+            document.body.append(div);
+
+            //also you can change html using js using query selctor--find the first HTML element that matches a CSS selector. if not found return null
+
+            let h=document.getElementById("heading");
+            h.innerHTML="green";
+            document.querySelector('#heading').innerHTML="<strong>DOM</strong>"
+
+        </script>
+    </body>
+</html>

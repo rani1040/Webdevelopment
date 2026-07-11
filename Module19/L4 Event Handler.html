@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #dragblock{
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    cursor: grab;
+}
+        </style>
+
+    </head>
+    <body>
+        
+        <!-- Event Handler clicking-->
+         <button onclick="knowdatatyoe()" id="btn">click on me to know what kind of data type i am </button>
+      
+        <button id="dragblock">string</button>
+         <!-- how to drag that is also event -->
+         <script>
+
+           var btn=document.getElementById("btn")
+           function  knowdatatyoe(){
+            btn.innerText="Integer";
+            btn.style.backgroundColor="blue";
+           }
+
+           // how to make event handler without explicit creating function
+           var block=document.getElementById("dragblock");
+
+           // variable to check wheter persion is dragging it or not
+           isdraaging=false;
+
+           block.addEventListener("mousedown",
+            function(){
+                isdraaging=true;
+                block.style.backgroundColor="green";
+            } )
+
+            document.addEventListener("mouseup",
+                function(){
+                isdraaging=false;
+                block.style.backgroundColor="red";
+                }
+            )
+
+           document.addEventListener("mousemove",
+                function(){
+                    if(isdraaging==true){
+                        block.style.left= event.pageX-10+"px";
+                        block.style.top=event.pageY-10+"px";
+                    }
+                }
+            )
+         </script>
+
+
+    </body>
+</html>

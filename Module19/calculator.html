@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+   <body>
+    <input id="displa" readonly>
+    <button onclick="addvalue('4')">4</button>
+    <button onclick="addvalue('8')">8</button>
+    <button onclick="addvalue('+')">+</button>
+    <button onclick="SHOW()">=</button>
+    <button onclick="clear()">CE</button>
+ 
+
+    <script>
+        const display = document.getElementById("displa");
+        function addvalue(num){
+            display.value+=num;
+        }
+
+        function SHOW(){
+            display.value = eval(display.value);
+        }
+        function clear(){
+            display.value=" ";
+        }
+      
+    </script>
+   </body>
+   
+    </html>

@@ -1,0 +1,102 @@
+ * {
+     margin: 0;
+     padding: 0;
+     font-family: 'Inter', sans-serif;
+     box-sizing: border-box;
+ }
+
+ header {
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+     align-items: center;
+
+     width: 100%;
+     max-width: 700px;
+
+     /* this means from top-bottom 10px and right and left automatically*/
+     margin: 40px auto;
+     gap: 20px;
+
+ }
+
+header h1 {
+     padding: 20px;
+     text-shadow: 2px 2px 6px rgba(174, 118, 217, .4);
+ }
+
+ body {
+     background-color: #FBEFEF;
+     color: #4a1c6d;
+     line-height: 1.6;
+ }
+ .container {
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+     gap:30px
+ }
+
+.toolbox,
+.workspace,
+.conditional-list,
+.action-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 500px;
+    border-radius: 20%;
+    flex-direction: column;
+
+}
+.toolbox{
+    background-color: white;
+    border-radius: 8px;
+}
+.workspace{
+    background-color: black;
+    border-radius: 8px;
+}
+
+
+.condition,
+.action {
+    padding: 10px;
+    border-radius: 20px;
+    position: absolute;
+}
+
+#c1 {left: 50px;top: 200px;margin: 10px;}
+#c2 {left: 50px;top: 260px;margin: 10px;}
+#a1 {left: 350px;top: 200px;margin: 10px;}
+#a2 {left: 350px;top: 260px;margin: 10px;}
+#a3 {left: 350px;top: 320px;margin: 10px;}
+#a4 {left: 350px;top: 380px;margin: 10px;}
+
+.condition-slot, .action-slot{
+    width: 150px;
+    height: 60px;
+    font-size: 18px;
+    border-radius: 3px;
+    background-color: grey;
+    border:5px dashed white;
+    color: white;
+    padding:10px ;
+    text-align: center;
+}
+.if-statement span{
+    display: flex;
+    flex-direction: row;
+    font-size: 40px;
+    color:white;
+    gap:20px;
+}
+.execution span{
+        display: flex;
+        flex-direction: column;
+        font-size: 40px;
+        color: white;
+        gap: 20px;
+}

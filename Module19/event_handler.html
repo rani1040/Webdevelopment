@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery Tracker</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:700px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    color:#333;
+}
+
+.buttons{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+button{
+    padding:12px 22px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    color:white;
+    transition:.3s;
+}
+
+.save{
+    background:#28a745;
+}
+
+.save:hover{
+    background:#1d7d33;
+}
+
+.delivery{
+    background:#007bff;
+}
+
+.delivery:hover{
+    background:#0056b3;
+}
+
+.box{
+    background:#f4f4f4;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.row{
+    margin:12px 0;
+}
+
+label{
+    font-weight:bold;
+    color:#444;
+}
+
+pre{
+    background:white;
+    padding:10px;
+    border-radius:8px;
+    overflow:auto;
+    margin-top:5px;
+}
+
+#status{
+    margin-top:15px;
+    font-size:20px;
+    text-align:center;
+    color:#d35400;
+    font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🚚 Delivery Tracker</h1>
+
+<div class="buttons">
+<button class="save" onclick="saveOrder()">Save Order</button>
+
+<button class="delivery" onclick="startDelivery()">
+Start Delivery
+</button>
+</div>
+
+<div class="box">
+
+<div class="row">
+<label>Original Order Object</label>
+<pre id="original">-</pre>
+</div>
+
+<div class="row">
+<label>JSON String</label>
+<pre id="json">-</pre>
+</div>
+
+<div class="row">
+<label>Parsed Object</label>
+<pre id="parsed">-</pre>
+</div>
+
+</div>
+
+<div id="status">Waiting for Delivery...</div>
+
+</div>
+
+<script>
+
+function saveOrder(){
+
+let order={
+    orderId:101,
+    customer:"Rani",
+    item:"Laptop",
+    quantity:1,
+    price:65000,
+    address:"Bangalore"
+};
+
+document.getElementById("original").textContent=
+JSON.stringify(order,null,2);
+
+let jsonText=JSON.stringify(order);
+
+document.getElementById("json").textContent=jsonText;
+
+let parsedOrder=JSON.parse(jsonText);
+
+document.getElementById("parsed").textContent=
+JSON.stringify(parsedOrder,null,2);
+
+}
+
+function wait(ms){
+    return new Promise(resolve=>{
+        setTimeout(resolve,ms);
+    });
+}
+
+async function startDelivery(){
+
+let status=document.getElementById("status");
+
+status.innerHTML="✅ Order Confirmed";
+//here we are using this wait
+await wait(2000);
+
+status.innerHTML="📦 Order Packed";
+await wait(2000);
+
+status.innerHTML="🚚 Out for Delivery";
+await wait(2000);
+
+status.innerHTML="🎉 Delivered Successfully!";
+}
+
+</script>
+
+</body>
+</html>

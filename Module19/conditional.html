@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="condition_style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+           <h1>Interactive Conditional Statement Program</h1>
+        </header>
+        <main class="container">
+            
+       <section class="toolbox">
+            <!--lets make 2 box in this-->
+            <article class="conditional-list">
+                <h1>Conditions</h1>
+                <button class="condition" id="c1">12 is Divisble by 2</button>
+                <button class="condition" id="c2">Score>80</button>
+            </article>
+            <hr>
+            <article class="action-list">
+                <h1>Actions</h1>
+                <button class="action" id="a5">Even</button>
+                <button class="action" id="a4">Odd</button>
+                <button class="action" id="a3">Pass</button>
+                <button class="action" id="a4">Fail</button>
+            </article>
+
+        </section>
+  
+        <!--section for -->
+        <section class="workspace">
+
+                <div class="if-statement">
+                    <span>if ( </span>
+
+                    <div class="condition-slot">
+                        condition
+                    </div>
+
+                    <span>)</span>        
+                   
+                </div>
+                <div class="execution">
+                     <span>{</span>
+                    <div class="action-slot">
+                        action
+                    </div>
+                    <span>}</span>
+                </div>
+        
+       
+       </section>
+    </main>
+
+
+
+    <script>
+        function to_make_button_draggable(){
+            for(var i=1;i<3;i++){
+                let id="c"+i;
+                let conditional_block=document.getElementById(id);
+                var isdrag=false;
+
+                conditional_block.addEventListener("mousedown", () => {
+                    isdrag = true;
+                });
+                document.addEventListener("mouseup", () => {
+    isdrag = false;
+});
+                document.addEventListener("mousemove", function (event) {
+                if (isdrag == true) {
+                conditional_block.style.left = event.pageX - 50 + "px";
+                conditional_block.style.top = event.pageY - 50 + "px";
+                }
+            });
+                    }
+
+                }
+                to_make_button_draggable();
+
+
+        
+    </script>
+    </body>
+</html>

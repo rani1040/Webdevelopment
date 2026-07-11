@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="data.js" />
+  </head>
+  <body>
+    <header>
+      <h1>JavaScript Data Types Challenge</h1>
+      <p>
+        Can you match each value with its correct data type? Drag the boxes to
+        find out!
+      </p>
+    </header>
+
+    <!--value button-->
+    <div class="top">
+      <button class="value_btn" id="value_btn">5</button>
+    </div>
+
+    <!--datatypes container -->
+    <div class="bottom">
+      <div class="datatype" data-type="number">Integer</div>
+      <div class="datatype" data-type="string">String</div>
+      <div class="datatype" data-type="boolean">Boolean</div>
+      <div class="datatype" data-type="object">Object</div>
+    </div>
+    <p id="test"></p>
+    <script>
+
+      // generate random values
+      function generate() {
+        const value = [
+          Math.floor(Math.random() * 10),
+          "Rose",
+          "Age",
+          "Kuljeet",
+          true,
+          false,
+        ];
+
+        const index = Math.floor(Math.random() * value.length);
+        return value[index];
+      }
+
+
+     
+      const button = document.getElementById("value_btn");
+      let current_value = generate();
+      button.innerText = current_value;
+
+      function nextQuestion() {
+            current_value = generate();
+            button.innerText = current_value;
+
+            button.style.left = "720px";
+            button.style.top = "300px";
+      }
+
+
+
+      // code for making block draggable
+      let isdrag = false;
+      button.addEventListener("mousedown", function () {
+        isdrag = true;
+      });
+
+      
+
+      document.addEventListener("mousemove", function (event) {
+        if (isdrag == true) {
+          button.style.left = event.pageX - 50 + "px";
+          button.style.top = event.pageY - 50 + "px";
+        }
+      });
+
+      // lets write code for checking whether button is touching boxes or not
+
+       function ResetDatatype(){
+        const datatypes = document.querySelectorAll(".datatype");
+          for (const datatype of datatypes){
+             const answer = datatype.dataset.type;
+            datatype.innerHTML= answer;
+            datatype.style.backgroundColor = "rgb(245, 206, 244)";
+             button.style.display="block";
+          }
+         
+      }
+
+      function checkcollision(){
+        const datatypes = document.querySelectorAll(".datatype");
+
+      for (const datatype of datatypes) {
+        const value_box = button.getBoundingClientRect();
+        const box = datatype.getBoundingClientRect();
+        const answer = datatype.dataset.type;
+
+        if (
+          value_box.left < box.right &&
+          value_box.right > box.left &&
+          value_box.top < box.bottom &&
+          value_box.bottom > box.top
+        ) {
+          if (answer == typeof current_value) {
+           
+            datatype.innerHTML="correct";
+            datatype.style.backgroundColor = "green";
+            button.style.display="none";
+             setTimeout(nextQuestion,1000);
+             setTimeout( ResetDatatype,1000);
+            
+          }
+          else{
+            
+            datatype.innerHTML="Wrong";
+            datatype.style.backgroundColor = "red";
+             button.style.display="none";
+            setTimeout( nextQuestion,1000);
+            setTimeout( ResetDatatype,1000);
+          }
+        }
+      }
+      }
+
+      document.addEventListener("mouseup", function () {
+        isdrag = false;
+        checkcollision();
+      });
+    </script>
+  </body>
+</html>
